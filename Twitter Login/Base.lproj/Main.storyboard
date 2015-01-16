@@ -35,11 +35,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" rowHeight="58" id="baa-of-ifC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="AccountCell" rowHeight="58" id="baa-of-ifC">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="baa-of-ifC" id="4j5-SH-ck8">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ttZ-M1-bhi" kind="show" identifier="setAccount:" id="U3Z-Kv-n3x"/>
+                                    <segue destination="bHZ-tt-W11" kind="show" identifier="seeKeys" trigger="accessoryAction" id="BoF-sX-PTi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -62,6 +66,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLq-V7-kLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1000" y="324"/>
+        </scene>
+        <!--Twitter Keys Table View Controller-->
+        <scene sceneID="wnh-e7-Z7z">
+            <objects>
+                <tableViewController id="bHZ-tt-W11" customClass="TJWTwitterKeysTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="X0q-Jg-fDn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeyCell" id="qFG-b9-wIK">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qFG-b9-wIK" id="CM3-cl-MSi">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bHZ-tt-W11" id="hl5-PP-29v"/>
+                            <outlet property="delegate" destination="bHZ-tt-W11" id="Uh3-hx-pI4"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Get Keys" id="eKZ-ow-4Gb">
+                            <connections>
+                                <action selector="getKeysBarButtonItemPressed:" destination="bHZ-tt-W11" id="zb3-dR-4Yn"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jaK-j2-3DY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744" y="1"/>
         </scene>
         <!--Twitter User Table View Controller-->
         <scene sceneID="lqT-Vf-fBR">
@@ -98,7 +135,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8j-iL-8Mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645" y="324"/>
+            <point key="canvasLocation" x="1757" y="656"/>
         </scene>
     </scenes>
 </document>

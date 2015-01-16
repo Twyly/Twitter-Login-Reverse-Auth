@@ -22,6 +22,7 @@
 		F580921A1A6884C100BF8505 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = F58092171A6884C100BF8505 /* OAuthCore.m */; };
 		F58092201A6884F500BF8505 /* TWTAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F580921D1A6884F500BF8505 /* TWTAPIManager.m */; };
 		F58092211A6884F500BF8505 /* TWTSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F580921F1A6884F500BF8505 /* TWTSignedRequest.m */; };
+		F59DA11E1A695AC300FEA500 /* TJWTwitterKeysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59DA11D1A695AC300FEA500 /* TJWTwitterKeysTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		F580921D1A6884F500BF8505 /* TWTAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTAPIManager.m; sourceTree = "<group>"; };
 		F580921E1A6884F500BF8505 /* TWTSignedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTSignedRequest.h; sourceTree = "<group>"; };
 		F580921F1A6884F500BF8505 /* TWTSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTSignedRequest.m; sourceTree = "<group>"; };
+		F59DA11C1A695AC300FEA500 /* TJWTwitterKeysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJWTwitterKeysTableViewController.h; sourceTree = "<group>"; };
+		F59DA11D1A695AC300FEA500 /* TJWTwitterKeysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJWTwitterKeysTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				F58092091A68678500BF8505 /* TJWTwitterAcountsTableViewController.m */,
 				F580920E1A68691900BF8505 /* TJWTwitterUserTableViewController.h */,
 				F580920F1A68691900BF8505 /* TJWTwitterUserTableViewController.m */,
+				F59DA11C1A695AC300FEA500 /* TJWTwitterKeysTableViewController.h */,
+				F59DA11D1A695AC300FEA500 /* TJWTwitterKeysTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				F580920A1A68678500BF8505 /* TJWTwitterAcountsTableViewController.m in Sources */,
 				F58092191A6884C100BF8505 /* OAuth+Additions.m in Sources */,
 				F58092101A68691900BF8505 /* TJWTwitterUserTableViewController.m in Sources */,
+				F59DA11E1A695AC300FEA500 /* TJWTwitterKeysTableViewController.m in Sources */,
 				F58092181A6884C100BF8505 /* NSData+Base64.m in Sources */,
 				F580921A1A6884C100BF8505 /* OAuthCore.m in Sources */,
 				F58091E31A685F5B00BF8505 /* AppDelegate.m in Sources */,

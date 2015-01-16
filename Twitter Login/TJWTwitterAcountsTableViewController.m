@@ -12,11 +12,12 @@
 
 #import "TJWTwitterAcountsTableViewController.h"
 #import "TJWTwitterUserTableViewController.h"
-#import "TWTAPIManager.h"
+#import "TJWTwitterKeysTableViewController.h"
 
 
 static NSString *const kAccountCellIdentifier = @"AccountCell";
 static NSString *const kSetAccountSegueIdentifier = @"setAccount:";
+static NSString *const kSeeKeysSegueIdentifier = @"seeKeys";
 
 
 @interface TJWTwitterAcountsTableViewController ()
@@ -24,22 +25,12 @@ static NSString *const kSetAccountSegueIdentifier = @"setAccount:";
 @property (strong, nonatomic) NSArray *acounts;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *getAccountsBarButtonItem;
 
-@property (nonatomic, strong) TWTAPIManager *apiManager;
-
-
 @end
 
 @implementation TJWTwitterAcountsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (TWTAPIManager *)apiManager {
-    if (!_apiManager) {
-        _apiManager = [[TWTAPIManager alloc] init];
-    }
-    return _apiManager;
 }
 
 #pragma mark - UITableViewDataSource
@@ -62,39 +53,23 @@ static NSString *const kSetAccountSegueIdentifier = @"setAccount:";
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ACAccount *account = self.acounts[indexPath.row];
-    [self.apiManager performReverseAuthForAccount:account withHandler:^(NSData *responseData, NSError *error) {
-        if (responseData) {
-            NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-            NSArray *parts = [responseStr componentsSeparatedByString:@"&"];
-            NSString *lined = [parts componentsJoinedByString:@"\n"];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message:lined delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            });
-        }
-    }];
-}
 
 #pragma mark - IBAction
 
 - (IBAction)getAccountsBarButtonItemPressed:(UIBarButtonItem *)sender {
+    [self fetchAccountsAndReloadTableView];
+}
+
+- (void)fetchAccountsAndReloadTableView {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
     self.getAccountsBarButtonItem.enabled = NO;
-    [accountStore requestAccessToAccountsWithType:accountType
-                                          options:nil
-                                       completion:^(BOOL granted,
-                                                    NSError *error)
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error)
      {
          if (granted)
          {
              NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-             
              // Check if the users has setup at least one Twitter account.
              if (accounts.count > 0) {
                  self.acounts = accounts;
@@ -104,10 +79,10 @@ static NSString *const kSetAccountSegueIdentifier = @"setAccount:";
          } else {
              NSLog(@"No access granted");
          }
-         
-         self.getAccountsBarButtonItem.enabled = YES;
-         [self.tableView reloadData];
-
+         dispatch_async(dispatch_get_main_queue(), ^{
+             self.getAccountsBarButtonItem.enabled = YES;
+             [self.tableView reloadData];
+         });
      }];
 }
 
@@ -118,6 +93,11 @@ static NSString *const kSetAccountSegueIdentifier = @"setAccount:";
         NSIndexPath *path = [self.tableView indexPathForCell:sender];
         ACAccount *account = self.acounts[path.row];
         TJWTwitterUserTableViewController *targetVC = (TJWTwitterUserTableViewController *)segue.destinationViewController;
+        targetVC.account = account;
+    } else if ([segue.identifier isEqualToString:kSeeKeysSegueIdentifier]) {
+        NSIndexPath *path = [self.tableView indexPathForCell:sender];
+        ACAccount *account = self.acounts[path.row];
+        TJWTwitterKeysTableViewController *targetVC = (TJWTwitterKeysTableViewController *)segue.destinationViewController;
         targetVC.account = account;
     }
 }

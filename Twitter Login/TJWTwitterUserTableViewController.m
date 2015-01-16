@@ -19,8 +19,6 @@ static NSString *const kFollowerCellIdentifier = @"FollowerCell";
 @property (strong, nonatomic) NSMutableArray *followers;
 @property (strong, nonatomic) NSString *nextCursor;
 
-
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *getFollowersBarButtonItem;
 
 @end
