@@ -58,13 +58,14 @@ static NSString *const kKeyCellIdentifier = @"KeyCell";
     if (path.section == 0) {
         cell.textLabel.text = [NSString stringWithFormat:@"@%@", self.account.username];
     } else {
-        if (path.row == 0) {
-            cell.textLabel.text = @"Consumer Key";
-            cell.detailTextLabel.text = self.keys[path.row];
-        } else {
-            cell.textLabel.text = @"Secret Key";
-            cell.detailTextLabel.text = self.keys[path.row];
-        }
+        cell.textLabel.text = self.keys[path.row];
+//        if (path.row == 0) {
+//            cell.textLabel.text = @"Consumer Key";
+//            cell.detailTextLabel.text = self.keys[path.row];
+//        } else {
+//            cell.textLabel.text = @"Secret Key";
+//            cell.detailTextLabel.text = self.keys[path.row];
+//        }
     }
 }
 
@@ -86,9 +87,9 @@ static NSString *const kKeyCellIdentifier = @"KeyCell";
         if (responseData) {
             NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
             NSArray *parts = [responseStr componentsSeparatedByString:@"&"];
-            NSString *lined = [parts componentsJoinedByString:@"\n"];
+            //NSString *lined = [parts componentsJoinedByString:@"\n"];
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.keys = @[lined];
+                self.keys = parts;
                 [self.tableView reloadData];
             });
             dispatch_async(dispatch_get_main_queue(), ^{
