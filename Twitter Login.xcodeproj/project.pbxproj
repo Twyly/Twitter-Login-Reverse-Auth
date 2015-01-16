@@ -109,11 +109,7 @@
 				F58091E11A685F5B00BF8505 /* AppDelegate.h */,
 				F58091E21A685F5B00BF8505 /* AppDelegate.m */,
 				F58091E71A685F5B00BF8505 /* Main.storyboard */,
-				F580921C1A6884F500BF8505 /* TWTAPIManager.h */,
-				F580921D1A6884F500BF8505 /* TWTAPIManager.m */,
-				F580921E1A6884F500BF8505 /* TWTSignedRequest.h */,
-				F580921F1A6884F500BF8505 /* TWTSignedRequest.m */,
-				F580921B1A6884CC00BF8505 /* ABOAuthCore */,
+				F59DA11B1A68BA0400FEA500 /* External Code */,
 				F58092111A6874D500BF8505 /* ViewControllers */,
 				F58091EA1A685F5B00BF8505 /* Images.xcassets */,
 				F58091EC1A685F5B00BF8505 /* LaunchScreen.xib */,
@@ -179,6 +175,26 @@
 				F58092171A6884C100BF8505 /* OAuthCore.m */,
 			);
 			name = ABOAuthCore;
+			sourceTree = "<group>";
+		};
+		F59DA11A1A68B9FC00FEA500 /* Twitter Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F580921C1A6884F500BF8505 /* TWTAPIManager.h */,
+				F580921D1A6884F500BF8505 /* TWTAPIManager.m */,
+				F580921E1A6884F500BF8505 /* TWTSignedRequest.h */,
+				F580921F1A6884F500BF8505 /* TWTSignedRequest.m */,
+			);
+			name = "Twitter Helpers";
+			sourceTree = "<group>";
+		};
+		F59DA11B1A68BA0400FEA500 /* External Code */ = {
+			isa = PBXGroup;
+			children = (
+				F59DA11A1A68B9FC00FEA500 /* Twitter Helpers */,
+				F580921B1A6884CC00BF8505 /* ABOAuthCore */,
+			);
+			name = "External Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +498,7 @@
 				F58091FF1A685F5B00BF8505 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F58092001A685F5B00BF8505 /* Build configuration list for PBXNativeTarget "Twitter LoginTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +507,7 @@
 				F58092021A685F5B00BF8505 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
